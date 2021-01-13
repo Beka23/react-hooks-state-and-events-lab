@@ -8,11 +8,17 @@ function App() {
   // this data will be passed down to the ShoppingList as a prop
   console.log(items);
 
+  const [currentState, updatedState] = useState(false);
+
+  function handleDarkModeClick() {
+    updatedState((currentState) => !currentState);
+  }
+
   return (
-    <div className={"App " + (false ? "dark" : "light")}>
+    <div className={"App " + (currentState ?"dark" : "light")}>
       <header>
         <h2>Shopster</h2>
-        <button>Dark Mode</button>
+        <button onClick={handleDarkModeClick}>{currentState ? "Dark" : "Light"} Mode</button>
       </header>
       <ShoppingList items={items} />
     </div>
